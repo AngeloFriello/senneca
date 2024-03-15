@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeViews from '@/views/HomeViews.vue';
 import Users from '@/components/Users.vue';
 import UserShow from '@/components/UserShow.vue';
+import CreateUser from '@/components/CreateUser.vue';
+import EditUser from '@/components/EditUser.vue';
 
 
 const router = createRouter({
@@ -22,8 +24,20 @@ const router = createRouter({
       name: 'users.show',
       props: true,
       component: UserShow,
+    },
+    {
+      path: '/user/create',
+      name: 'users.create',
+      props: true,
+      component: CreateUser
+    },
+    {
+      path: '/user/edit/:id',
+      name: 'users.edit',
+      props: true,
+      component: EditUser
     }
-  ]
+  ] 
 })
 
 export default router

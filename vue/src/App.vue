@@ -11,13 +11,30 @@ export default {
 </script>
 
 <template>
-  <header>
+    <!DOCTYPE html>
+    <html lang="en">
 
-  </header>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <meta name="csrf-token" content="">
+
+        <title>s</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="dns-prefetch" href="//fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    </head>
+
+    <header>
+
+    </header>
     <router-view>
 
     </router-view>
+    </html>
 </template>
 
-<style>
-</style>
+<style></style>

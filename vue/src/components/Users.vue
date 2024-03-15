@@ -18,7 +18,7 @@ export default {
                 })
         }
     },
-    created(){
+    created() {
         this.fetchIndex()
 
     }
@@ -31,10 +31,18 @@ export default {
 
     <ul v-for="user in users">
         <li>{{ user.name }}</li>
+        <router-link :to="{ name: 'users.show', params: { id: user.id } }">
+            go more detail's
+        </router-link>
         <li>{{ user.surname }}</li>
         <li>{{ user.email }}</li>
         <li>{{ user.birthday }}</li>
+
     </ul>
+
+    <router-link :to="{ name: 'users.create'}">
+        Aggiungi un nuovo utente
+    </router-link>
 </template>
 
 <style></style>
