@@ -9,33 +9,39 @@ use Illuminate\Database\Eloquent\Builder;
 
 class UserController extends Controller
 {
-    public function index(User $user){
-        $data = User::all();
+    public function index()
+    {
+        $data = User::paginate(10); // Pagina con 10 utenti per pagina
 
         return response()->json([
-
             'results' => [
-                'user'=> $data,
+                'user' => $data->items(), // Recupera solo gli utenti della pagina corrente
+                'pagination' => [
+                    'current_page' => $data->currentPage(), // Pagina corrente
+                    'last_page' => $data->lastPage(), // Ultima pagina
+                    'per_page' => $data->perPage(), // Elementi per pagina
+                    'total' => $data->total(), // Totale degli utenti
+                ],
             ],
             'success' => true,
-
         ]);
-        
     }
-    public function show(User $user){
+    public function show(User $user)
+    {
 
-        
+
         return response()->json([
-            'success'=> true,
-            'user'=> $user
+            'success' => true,
+            'user' => $user
         ]);
     }
 
-    public function create(){
-
+    public function create()
+    {
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
 
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
@@ -43,10 +49,10 @@ class UserController extends Controller
             'birthday' => 'required|date',
             'email' => 'required|email|unique:users,email',
         ]);
-    
+
         // Creazione del nuovo utente utilizzando il modello User
         $user = User::create($validatedData);
-    
+
         // Restituisci una risposta con il nuovo utente creato
         return response()->json($user, 201);
     }

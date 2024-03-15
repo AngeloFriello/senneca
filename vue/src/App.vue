@@ -29,12 +29,23 @@ export default {
     </head>
 
     <header>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-12">
+                    <router-link :to="{ name: 'users.index' }" class="btn btn-dark">
+                        All Users
+                    </router-link>
+                </div>
+            </div>
+        </div>
 
     </header>
     <router-view>
 
     </router-view>
+
     </html>
+
 </template>
 
 <style></style>

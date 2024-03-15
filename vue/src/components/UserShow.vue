@@ -7,7 +7,7 @@ export default {
     },
     data() {
         return {
-            
+
             user: null,
             BASE_URL: 'http://127.0.0.1:8000/api',
         }
@@ -23,7 +23,7 @@ export default {
         deleteUser(id) {
             axios.delete(`${this.BASE_URL}/users/${id}`)
                 .then(response => {
-
+                    this.$router.go(-1);
                     console.log('Utente eliminato:', response.data);
                 })
                 .catch(error => {
@@ -39,21 +39,28 @@ export default {
 </script>
 
 <template>
-    <div>
-        <div>
-            <div v-if="this.user">
+    <div class="container">
+        <div class="row">
+            <div v-if="this.user" class="col-4 m-5">
+                <div class="card p-4">
+                    <ul>
+                        <li><strong>Name: </strong> {{ this.user.name }}</li>
+                        <li><strong>Surname: </strong> {{ this.user.surname }}</li>
+                        <li><strong>Email: </strong> {{ this.user.email }}</li>
+                        <li><strong>Birthday: </strong> {{ this.user.birthday }}</li>
+                    </ul>
 
-                <h3>{{ this.user.name }}</h3>
-                <h3>{{ this.user.surname }}</h3>
-                <h3>{{ this.user.email }}</h3>
-                <h3>{{ this.user.birthday }}</h3>
-                <router-link :to="{ name: 'users.edit', params: { id: user.id } }">
-                    Edit
-                </router-link>
-                <button @click="deleteUser(this.user.id)" class="btn btn-danger">
-                    Delete
-                </button>
-
+                    <div class="my-3">
+                        <router-link :to="{ name: 'users.edit', params: { id: user.id } }" class="btn btn-secondary ">
+                            Edit
+                        </router-link>
+                    </div>
+                    <div>
+                        <button @click="deleteUser(this.user.id)" class="btn btn-danger">
+                            Delete
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

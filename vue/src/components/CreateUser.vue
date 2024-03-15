@@ -14,10 +14,11 @@ export default {
     };
   },
   methods: {
-    updateUser() {
+    createUser() {
       axios.post(`${this.BASE_URL}/users/create`, this.userData)
         .then(response => {
           console.log('User updated successfully:', response.data);
+          this.$router.go(-1);
         })
         .catch(error => {
           console.error('Error updating user:', error);
@@ -32,7 +33,7 @@ export default {
 
 <template>
 
-    <form @submit.prevent="updateUser" class="container">
+    <form @submit.prevent="createUser" class="container">
 
         <div>
             <label for="name" class="col-md-4 col-form-label text-md-right fw-bold" >NAME</label>

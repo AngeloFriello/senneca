@@ -21,6 +21,7 @@ export default {
       axios.post(`${this.BASE_URL}/users/edit/${this.id}`, this.userData)
         .then(response => {
           console.log('User updated successfully:', response.data);
+          this.$router.go(-1);
         })
         .catch(error => {
           console.error('Error updating user:', error);
