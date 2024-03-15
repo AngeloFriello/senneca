@@ -1,9 +1,9 @@
 @extends('layout.app')
 @section('content')
 
-<form action="{{route('users.store')}}" method="POST" class="container">
-
-@csrf
+<form action="{{route('users.update', $user->id)}}" method="POST" class="container" enctype="multipart/form-data" >
+    @method('PUT')
+    @csrf
 
 <div>
     <label for="name" class="col-md-4 col-form-label text-md-right fw-bold">{{__('Name *')}}</label>
