@@ -20,7 +20,7 @@ class UsersTableSeeder extends Seeder
             $new_user->name = $faker->name();
             $new_user->surname = $faker->name();
             $new_user->email = $faker->email();
-            $new_user->birthday_date = $faker->dateTime();
+            $new_user->birthday = $faker->dateTime();
             
             $new_user->save();
         }

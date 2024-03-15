@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         $users= User::all();
 
-        return view("user.index", compact('users'));
+        return view("users.index", compact('users'));
     }
 
     /**
@@ -22,7 +22,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -30,7 +30,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'birthday' => 'required|date',
+            'email' => 'required|email|unique:users,email',
+        ]);
+
+        $user = User::create($validatedData);
+
+        return redirect()->route('users.show', $user->id);
     }
 
     /**
@@ -40,7 +49,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        return view('user.show', compact('user'));
+        return view('users.show', compact('user'));
     }
 
     /**

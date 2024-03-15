@@ -12,6 +12,7 @@
 
     </head>
     <body>
-        <a href="{{ route('user.index') }}">vedi tutti gli utenti</a>
+        <a href="{{ route('users.index') }}">vedi tutti gli utenti</a>
+        <button><a href="{{route('users.create')}}">crea un nuovo utente</a></button>
     </body>
 </html>

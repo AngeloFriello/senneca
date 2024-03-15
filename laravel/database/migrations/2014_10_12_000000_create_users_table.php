@@ -16,8 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('email')->unique();
-            $table->date('birthday_date');
-
+            $table->date('birthday');
             $table->timestamps();
         });
     }
