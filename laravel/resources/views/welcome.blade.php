@@ -12,6 +12,6 @@
 
     </head>
     <body>
-        WELCOME
+        <a href="{{ route('user.index') }}">vedi tutti gli utenti</a>
     </body>
 </html>
